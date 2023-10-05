@@ -1,0 +1,16 @@
+common: &common
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: <%= ENV["DB_USER"] %>
+  password: <%= ENV["DB_PASS"] %>
+  host: <%= ENV["DB_HOST"] %>
+production:
+  <<: *common
+  database: beon_twitter_prod
+development:
+  <<: *common
+  database: beon_twitter_dev
+test:
+  <<: *common
+  database: beon_twitter_test
