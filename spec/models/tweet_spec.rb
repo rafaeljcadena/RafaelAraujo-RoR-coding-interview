@@ -12,7 +12,7 @@ RSpec.describe Tweet, type: :model do
     end
 
     it 'should have 180 caracters in body content' do
-      tweet = Tweet.new(body: '12345')
+      tweet = Tweet.new(body: '12345') # put more that 180 caracters to check this test
 
       tweet.valid?
       expect(tweet.errors).to_not have_key(:length)
