@@ -34,6 +34,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   belongs_to :company, optional: true
+  has_many :tweets, dependent: :destroy
   scope :by_company, -> (identifier) { where(company: identifier) if identifier.present? }
   scope :by_username, -> (username) { where('username LIKE ?', username) if username.present? }
 end

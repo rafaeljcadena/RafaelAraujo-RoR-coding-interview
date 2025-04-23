@@ -17,6 +17,7 @@ module Api
 
     def index
       @tweets = Tweet.order("created_at ASC").limit(TWEETS_PER_PAGE).offset(offset)
+      @tweets = @tweets.not_in_company if params[:affiliated] == 'false'
 
       render json: @tweets
     end

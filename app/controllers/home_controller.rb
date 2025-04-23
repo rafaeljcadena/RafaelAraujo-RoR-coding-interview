@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @tweets = Tweet.distinct(:user_id).order("created_at DESC").to_a.first(20)
+    @tweets = Tweet.includes(:user).order("created_at DESC").limit(20)
   end
 end
